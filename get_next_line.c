@@ -6,7 +6,7 @@
 /*   By: taejkim <taejkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 16:27:08 by taejkim           #+#    #+#             */
-/*   Updated: 2021/01/21 20:41:07 by taejkim          ###   ########.fr       */
+/*   Updated: 2021/01/21 20:50:20 by taejkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int		get_next_line(int fd, char **line)
 {
-	
 	
 	if (fd < 0 || line == NULL || BUFFER_SIZE <= 0)
 		return (-1);
