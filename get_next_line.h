@@ -6,7 +6,7 @@
 /*   By: taejkim <taejkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 16:28:02 by taejkim           #+#    #+#             */
-/*   Updated: 2021/04/12 19:24:10 by taejkim          ###   ########.fr       */
+/*   Updated: 2021/04/12 20:12:12 by taejkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@
 # include <stdlib.h>
 # include <limits.h>
 
+int		read_ing(char **line, char **backup, char **buf, char *nl);
+int		read_end(char **line, char **backup, char **buf);
 int		get_next_line(int fd, char **line);
 
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
-char	*ft_strdup(const char *s1);
-char	*ft_strjoin(char const *s1, char const *s2);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+char	*ft_strdup(char *s1);
+char	*ft_strjoin(char *s1, char *s2);
 
 #endif

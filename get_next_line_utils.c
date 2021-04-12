@@ -6,11 +6,11 @@
 /*   By: taejkim <taejkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 15:59:04 by taejkim           #+#    #+#             */
-/*   Updated: 2021/04/12 19:24:08 by taejkim          ###   ########.fr       */
+/*   Updated: 2021/04/12 20:12:04 by taejkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <get_next_line.h>
+#include "get_next_line.h"
 
 size_t	ft_strlen(const char *s)
 {
@@ -38,7 +38,7 @@ char	*ft_strchr(const char *s, int c)
 	return (0);
 }
 
-char	*ft_strdup(const char *s1)
+char	*ft_strdup(char *s1)
 {
 	char	*ptr;
 	size_t	len;
@@ -58,7 +58,7 @@ char	*ft_strdup(const char *s1)
 	return (ptr);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*ptr;
 	size_t	len;
@@ -82,26 +82,4 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ptr[i] = 0;
 	free(s1);
 	return (ptr);
-}
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
-{
-	size_t res;
-	size_t i;
-
-	if (dst == NULL && src == NULL)
-		return (0);
-	res = ft_strlen(src);
-	if (dstsize == 0)
-		return (res);
-	i = 0;
-	while (i < (dstsize - 1))
-	{
-		if (src[i] == 0)
-			break ;
-		dst[i] = src[i];
-		++i;
-	}
-	dst[i] = 0;
-	return (res);
 }

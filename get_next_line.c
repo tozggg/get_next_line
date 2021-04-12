@@ -6,7 +6,7 @@
 /*   By: taejkim <taejkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 16:27:08 by taejkim           #+#    #+#             */
-/*   Updated: 2021/04/12 19:24:07 by taejkim          ###   ########.fr       */
+/*   Updated: 2021/04/12 20:13:33 by taejkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,27 @@
 
 int		read_ing(char **line, char **backup, char **buf, char *nl)
 {
-	
+	char	*tmp;
 
+	(*nl) = 0;
+	(*line) = ft_strdup(*backup);
+	tmp = ft_strdup(nl);
+	free(*backup);
+	*backup = tmp;
+	free(*buf);
+	return (1);
 }
 
 int		read_end(char **line, char **backup, char **buf)
 {
+	char	*nl;
 
+	if (!(nl = ft_strchr(*backup, '\n')))
+		return (read_ing(line, backup, buf, nl));
+	(*line) = ft_strdup(*backup);
+	free(*backup);
+	free(*buf);
+	return (0);
 }
 
 int		get_next_line(int fd, char **line)
@@ -30,20 +44,20 @@ int		get_next_line(int fd, char **line)
 	char		*nl;
 	int			readsize;
 
-	if (fd < 0 || line == NULL || BUFFER_SIZE <= 0 )
+	if (fd < 0 || line == NULL || BUFFER_SIZE <= 0)
 		return (-1);
 	if (!(buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
 	while ((readsize = read(fd, buf, BUFFER_SIZE)) != 0)
 	{
-		if (readsize = -1)
+		if (readsize == -1)
 		{
 			free(buf);
 			return (-1);
 		}
 		buf[readsize] = 0;
 		backup[fd] = ft_strjoin(backup[fd], buf);
-		if (nl = ft_strchr(backup[fd], '\n'))
+		if (!(nl = ft_strchr(backup[fd], '\n')))
 			return (read_ing(line, &backup[fd], &buf, nl));
 	}
 	return (read_end(line, &backup[fd], &buf));
@@ -64,10 +78,10 @@ int		main()
 	while ((ret = get_next_line(fd, &line)) > 0)
 	{
 		// 이부분 왜 &line으로 printf함?
-		printf("%s\n", &line);
+		printf("%s\n", line);
 		free(line);
 	}
-	printf("%s\n", &line);
+	printf("%s\n", line);
 	free(line);
 	return (1);
 }
