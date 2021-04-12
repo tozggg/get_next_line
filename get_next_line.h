@@ -6,7 +6,7 @@
 /*   By: taejkim <taejkim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/21 16:28:02 by taejkim           #+#    #+#             */
-/*   Updated: 2021/01/21 16:54:50 by taejkim          ###   ########.fr       */
+/*   Updated: 2021/04/12 19:24:10 by taejkim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,14 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <fcntl.h>
+# include <limits.h>
 
 int		get_next_line(int fd, char **line);
+
+size_t	ft_strlen(const char *s);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strdup(const char *s1);
+char	*ft_strjoin(char const *s1, char const *s2);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 
 #endif
